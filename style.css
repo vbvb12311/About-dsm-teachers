@@ -1,3 +1,126 @@
-p {
+:root {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --surface-soft: #dbeafe;
+  --text: #172033;
+  --muted: #667085;
+  --line: #e5e7eb;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #ef4444;
+  --shadow: 0 18px 45px rgba(31, 41, 55, 0.1);
+  --card-radius: 16px;
+  --button-radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "SUIT", "Pretendard", "Malgun Gothic", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(20, 184, 166, 0.16),
+      transparent 32rem
+    ),
+    linear-gradient(180deg, #f8fbff 0%, var(--bg) 45%, #eef2f7 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 16px clamp(18px, 4vw, 48px);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(217, 226, 239, 0.8);
+  backdrop-filter: blur(18px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 20px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--button-radius);
+  background: var(--primary);
+  color: white;
+  font-size: 13px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: var(--button-radius);
+  background: var(--primary);
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 700;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+button svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.3;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: var(--primary-dark);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+}
+
+nav button,
+.login-btn {
+  background: #eef4ff;
+  color: var(--primary);
+}
+
+nav button:hover,
+.login-btn:hover {
+  background: #dbeafe;
+  box-shadow: none;
+}
+
+footer {
+  margin-top: 34px;
+  padding: 30px 16px;
+  border-top: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--muted);
+  text-align: center;
 }
