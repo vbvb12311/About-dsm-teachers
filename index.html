@@ -16,26 +16,40 @@
         <span class="logo-mark">DSM</span>
         <span>대마고 선생님백과</span>
       </div>
-      <nav>
-        <button>홈</button>
-        <button>선생님 목록</button>
-        <button>후기</button>
-        <button>설정</button>
-      </nav>
-      <button class="login-btn">로그인</button>
-    </header>
 
-    <main class="page active">
-      <p style="text-align: center; padding: 100px 0">
-        대마고 선생님백과에 오신 것을 환영합니다.
-      </p>
-    </main>
+      <nav>
+        <button onclick="showPage('home')">
+          <i data-lucide="home"></i>
+          홈
+        </button>
+        <button onclick="showPage('teachers')">
+          <i data-lucide="users"></i>
+          선생님 목록
+        </button>
+        <button onclick="showPage('reviews')">
+          <i data-lucide="message-square-text"></i>
+          후기
+        </button>
+        <button onclick="showPage('settings')">
+          <i data-lucide="settings"></i>
+          설정
+        </button>
+      </nav>
+
+      <button class="login-btn" id="loginStatus" onclick="showPage('login')">
+        <i data-lucide="log-in"></i>
+        로그인
+      </button>
+    </header>
 
     <footer>
       <p>대덕소프트웨어마이스터고등학교</p>
+
       <p>제작자 : 김승수</p>
+
       <p>제출일 : 2026.06.07</p>
     </footer>
+
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
   </body>
