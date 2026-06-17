@@ -1,3 +1,7 @@
+/* =========================================================================
+   [글로벌 CSS 테마 변수 정의]
+   서비스 전체 UI의 기본 색상 규격, 레이어 입체 그림자, 보더 라운드 표준 제어 변수 선언
+   ========================================================================= */
 :root {
   --bg: #f6f8fb;
   --surface: #ffffff;
@@ -8,11 +12,14 @@
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
   --accent: #ef4444;
+  --warning: #ef4444;
+  --danger: #ef4444;
   --shadow: 0 18px 45px rgba(31, 41, 55, 0.1);
   --card-radius: 16px;
   --button-radius: 12px;
 }
 
+/* 모든 마진과 패딩을 초기화하고 box-sizing을 지정하여 브라우저 파편화 여백 편차 방지 */
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +27,7 @@
   font-family: "SUIT", "Pretendard", "Malgun Gothic", sans-serif;
 }
 
+/* 앱 전체의 최소 높이를 확보하고, 입체감을 주는 라디얼 및 리니어 그라데이션 혼합 배경 구성 */
 body {
   min-height: 100vh;
   background:
@@ -33,6 +41,7 @@ body {
   line-height: 1.6;
 }
 
+/* 상단 고정 네비게이션: 스크롤 시 상단 고정(sticky) 및 배경 투명 블러 글래스모피즘 필터 구현 */
 header {
   position: sticky;
   top: 0;
@@ -47,15 +56,18 @@ header {
   backdrop-filter: blur(18px);
 }
 
+/* 서비스 상단 메인 브랜드 로고 타입 스타일 */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--text);
   font-size: 20px;
   font-weight: 800;
   white-space: nowrap;
 }
 
+/* 로고 앞 좌측 사각형 포인트 심볼 마크 레이아웃 */
 .logo-mark {
   display: grid;
   place-items: center;
@@ -65,8 +77,10 @@ header {
   background: var(--primary);
   color: white;
   font-size: 13px;
+  letter-spacing: 0;
 }
 
+/* 메인 메뉴 버튼들을 가로 정렬해주는 네비게이션 컨테이너 */
 nav {
   display: flex;
   justify-content: center;
@@ -74,6 +88,7 @@ nav {
   flex-wrap: wrap;
 }
 
+/* 전체 시스템에 공통 적용되는 기본 단추 컴포넌트 뼈대 및 모션 트랜지션 정의 */
 button {
   display: inline-flex;
   align-items: center;
@@ -92,30 +107,38 @@ button {
     background 0.18s ease;
 }
 
+/* 버튼 내부에 주입되는 Lucide 아이콘 그래픽 고정 스케일 지정 */
 button svg {
   width: 16px;
   height: 16px;
   stroke-width: 2.3;
 }
 
+/* 마우스 호버(Hover) 시 상단 무빙 및 그림자가 화사하게 퍼지는 인터랙션 피드백 */
 button:hover {
   transform: translateY(-1px);
   background: var(--primary-dark);
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
 }
 
+/* 메뉴 내부 이동 단추, 헤더 로그인 단추 등 보조 기능성 버튼들의 소프트 블루 스킨 정의 */
 nav button,
-.login-btn {
+.login-btn,
+.section-heading button {
   background: #eef4ff;
   color: var(--primary);
+  box-shadow: none;
 }
 
+/* 보조 단추 전용 호버 인터랙션 색상 세팅 */
 nav button:hover,
-.login-btn:hover {
+.login-btn:hover,
+.section-heading button:hover {
   background: #dbeafe;
   box-shadow: none;
 }
 
+/* 하단 크레딧 보드 푸터 레이아웃 균형 배치 */
 footer {
   margin-top: 34px;
   padding: 30px 16px;
