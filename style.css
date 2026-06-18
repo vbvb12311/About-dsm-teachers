@@ -147,3 +147,380 @@ footer {
   color: var(--muted);
   text-align: center;
 }
+
+/* =========================================================================
+   [SPA 가상 화면 상태 제어 스타일 구조]
+   비활성화 상태인 가상 페이지는 숨겨두고(none), active 클래스가 주입될 때만 노출(block)
+   ========================================================================= */
+.page {
+  display: none;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0;
+}
+
+.active {
+  display: block;
+}
+
+/* 홈 스크린 메인 대시보드 그리드 분할 (글 내용 박스 1.5 : 우측 통계 패널 0.8 배분 비율) */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 34px;
+}
+
+/* 카드 및 콘텐츠 판면들의 공통 화이트 스킨 배경, 테두리, 일관성 있는 그림자 아우라 통합 바인딩 */
+.hero-content,
+.hero-panel,
+.notice-box,
+.profile-card,
+.info-card,
+.review-form,
+.review-card,
+.setting-card,
+.login-card {
+  border: 1px solid rgba(217, 226, 239, 0.88);
+  border-radius: var(--card-radius);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
+}
+
+/* 대마고 브랜드 색상 인디고 블루 및 테일 민트 광원이 믹싱된 화려한 메인 웰컴 배너 박스 */
+.hero-content {
+  padding: clamp(28px, 5vw, 56px);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.96), rgba(20, 184, 166, 0.9)),
+    var(--primary);
+  color: white;
+}
+
+/* 가변 폭 뷰포트 확대에 따라 폰트 크기가 자연스럽게 스케일링되는 유동형(clamp) 대형 서체 타이틀 */
+.hero h1 {
+  max-width: 720px;
+  margin-bottom: 14px;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.12;
+}
+
+.hero p {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 17px;
+}
+
+/* 소분류 타이틀 가독성을 조율하기 위한 대문자형 규격 텍스트 */
+.eyebrow {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* 홈 배너 내부 검색 입력창을 포장해주는 반투명 래퍼 벨트 */
+.search-wrap {
+  display: flex;
+  gap: 10px;
+  max-width: 620px;
+  margin-top: 26px;
+  padding: 8px;
+  border-radius: var(--button-radius);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* 입력 필드 및 에어리어 폼 기본 규격 가이드 라인 */
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--button-radius);
+  background: white;
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+input {
+  padding: 14px;
+}
+
+/* 사용자가 입력창 클릭 마우스 진입 시 발생되는 외부 포커싱 블루 서라운드 링 아우라 */
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.search-wrap input {
+  border: none;
+}
+
+/* 검색 단추 전용 밤하늘 슬레이트 스킨 스타일 적용 */
+.search-wrap button {
+  min-width: 88px;
+  background: #0f172a;
+}
+
+/* 우측 통계형 현황 보드 박스 격자 */
+.hero-panel {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+}
+
+/* 수치 박스 개별 레이아웃 배경 */
+.hero-panel div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 104px;
+  padding: 20px;
+  border-radius: var(--card-radius);
+  background: var(--surface-soft);
+}
+
+.hero-panel strong {
+  color: var(--primary);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.hero-panel span {
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* 콘텐츠 목록 분할 파트의 상단 헤딩 타이틀 세트 배치 */
+.section-heading,
+.page-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 34px 0 16px;
+}
+
+.page-title {
+  display: block;
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+/* 단말기 화면 해상도폭에 대응하여 가로 열 개수를 자동 계산 제어하는 반응형 auto-fit 카드 그리드 */
+.teacher-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* 인명 카드 리스트 항목들의 깊이감 있는 쉐도우 효과 입체 드로잉 */
+.teacher-card {
+  position: relative;
+  min-height: 178px;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(217, 226, 239, 0.9);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgba(31, 41, 55, 0.08);
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+/* 프로필 카드 호버 타겟팅 시 위로 들리는 리프트 무빙 애니메이션 피드백 */
+.teacher-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.38);
+  box-shadow: 0 18px 40px rgba(31, 41, 55, 0.13);
+}
+
+.teacher-card h3 {
+  margin: 16px 0 8px;
+  font-size: 22px;
+}
+
+/* 텍스트 내용물이 카드를 침범하여 깨지는 가독성 유실 버그를 완벽 예방하는 줄바꿈/여백 개행 정책 선언 */
+.teacher-card p,
+.info-card p,
+.setting-card p,
+.notice-box p,
+.review-card p,
+.login-card p,
+#reviewGuide {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+
+/* 직관적인 학과 및 교과 식별을 도와주는 가독성 전용 카테고리 뱃지 컬러 클래스 팩 */
+.subject-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--button-radius);
+  background: #eef4ff;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.subject-badge.math { background: #e0f2fe; color: #0369a1; }
+.subject-badge.major { background: #ecfdf5; color: #047857; }
+.subject-badge.english { background: #fef3c7; color: #a16207; }
+.subject-badge.korean { background: #fce7f3; color: #be185d; }
+.subject-badge.social { background: #ede9fe; color: #6d28d9; }
+
+/* 하단 주의 알림창 전용 크림슨 레드 수직 인디케이터 장식 선 밴드 */
+.notice-box {
+  margin-top: 28px;
+  padding: 24px;
+  border-left: 5px solid var(--accent);
+}
+
+/* =========================================================================
+   [서브 가상 페이지 컴포넌트 세부 스타일 세팅]
+   ========================================================================= */
+.teacher-card button {
+  margin-top: 18px;
+}
+
+#teacherSearch {
+  margin-bottom: 18px;
+}
+
+/* 필터 정렬 및 퀵 소팅용 인터페이스 컨테이너 바 상자 배치 */
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+/* 소팅 및 필터 가이드 단추용 화이트 모던 스킨 커스텀 */
+.filter-buttons button,
+.review-sort button {
+  background: white;
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.filter-buttons button:hover,
+.review-sort button:hover {
+  background: #eef4ff;
+  color: var(--primary);
+  box-shadow: none;
+}
+
+/* 유저 로그인 정보 양식 라벨 스타일화 */
+.login-card label {
+  display: block;
+  margin: 14px 0 8px;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.login-card button {
+  margin-top: 16px;
+}
+
+.login-card p,
+#reviewGuide {
+  margin-top: 12px;
+}
+
+/* 상세 뷰 프로필 마스터 상단 정렬 레이아웃 */
+.profile-card {
+  padding: 34px;
+  text-align: center;
+}
+
+/* 인포 프로필 전용 원형 그라데이션 광원 엠블럼 아바타 상자 */
+.profile-image {
+  display: grid;
+  place-items: center;
+  width: 94px;
+  height: 94px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+/* 정보 목록형 데이터 블릿 마진 확보 */
+.info-card ul,
+.warning-card ul {
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.info-card button {
+  margin-top: 18px;
+  margin-right: 8px;
+}
+
+/* 경고 및 특수 주의사항 안내창 전용의 강렬한 라이트 레드 경고 패널 스킨 패키지 */
+.warning-card {
+  border: 1px solid #fecaca;
+  border-left: 5px solid var(--warning);
+  border-radius: var(--card-radius);
+  background: #fef2f2;
+}
+
+.warning-card h2 {
+  color: #b91c1c;
+}
+
+/* 대용량 장문 텍스트 수집용 전용 구역 설정 */
+textarea {
+  min-height: 220px;
+  padding: 14px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.review-form button {
+  margin-top: 12px;
+}
+
+.review-sort {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+/* 생성된 피드 목록 카드 전용 인디고 블루 왼쪽 하이라이트 밴드 장식 */
+.review-card {
+  border-left: 5px solid var(--primary);
+}
+
+.review-card button {
+  margin-top: 14px;
+  margin-right: 8px;
+}

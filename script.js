@@ -5,3 +5,4 @@ function showPage(pageName) {
   }
   document.getElementById(pageName).style.display = "block";
 }
+//추가용
