@@ -342,6 +342,206 @@
       </div>
     </section>
 
+    <section id="login" class="page">
+      <div class="page-title">
+        <p class="eyebrow">Login</p>
+        <h1>로그인</h1>
+      </div>
+
+      <div class="login-card">
+        <label for="loginId">아이디</label>
+        <input type="text" id="loginId" placeholder="아이디를 입력하세요" />
+
+        <label for="loginPassword">비밀번호</label>
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="비밀번호를 입력하세요"
+        />
+
+        <button onclick="login()">
+          <i data-lucide="log-in"></i>
+          로그인하기
+        </button>
+        <p id="loginMessage">로그인하면 후기를 작성할 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section id="teachers" class="page">
+      <div class="page-title">
+        <p class="eyebrow">Teachers</p>
+        <h1>선생님 목록</h1>
+      </div>
+
+      <input
+        type="text"
+        id="teacherSearch"
+        placeholder="선생님 검색"
+        onkeyup="searchTeacher()"
+      />
+
+      <div class="filter-buttons">
+        <button onclick="filterTeacher('전체')">전체</button>
+        <button onclick="filterTeacher('국어')">국어</button>
+        <button onclick="filterTeacher('영어')">영어</button>
+        <button onclick="filterTeacher('수학')">수학</button>
+        <button onclick="filterTeacher('사회')">사회</button>
+        <button onclick="filterTeacher('전공')">전공</button>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Popular & List</p>
+          <h2>인기 선생님과 전체 목록</h2>
+        </div>
+      </div>
+
+      <div class="teacher-grid">
+        <div class="teacher-card teacher-item" data-subject="수학">
+          <span class="subject-badge math">수학</span>
+          <h3>김선생</h3>
+          <p>수학 담당</p>
+          <button onclick="openTeacher('김선생', '수학')">
+            <i data-lucide="file-search"></i> 상세보기
+          </button>
+        </div>
+
+        <div class="teacher-card teacher-item" data-subject="국어">
+          <span class="subject-badge korean">국어</span>
+          <h3>박선생</h3>
+          <p>국어 담당</p>
+          <button onclick="openTeacher('박선생', '국어')">
+            <i data-lucide="file-search"></i> 상세보기
+          </button>
+        </div>
+
+        <div class="teacher-card teacher-item" data-subject="전공">
+          <span class="subject-badge major">전공</span>
+          <h3>이선생</h3>
+          <p>전공 담당</p>
+          <button onclick="openTeacher('이선생', '전공')">
+            <i data-lucide="file-search"></i> 상세보기
+          </button>
+        </div>
+
+        <div class="teacher-card teacher-item" data-subject="영어">
+          <span class="subject-badge english">영어</span>
+          <h3>한선생</h3>
+          <p>영어 담당</p>
+          <button onclick="openTeacher('한선생', '영어')">
+            <i data-lucide="file-search"></i> 상세보기
+          </button>
+        </div>
+
+        <div class="teacher-card teacher-item" data-subject="사회">
+          <span class="subject-badge social">사회</span>
+          <h3>정선생</h3>
+          <p>사회 담당</p>
+          <button onclick="openTeacher('정선생', '사회')">
+            <i data-lucide="file-search"></i> 상세보기
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="detail" class="page">
+      <div class="profile-card">
+        <div class="profile-image">T</div>
+        <h1 id="teacherName">김선생</h1>
+        <p id="teacherSubject">수학 담당</p>
+      </div>
+
+      <div class="info-card">
+        <h2>선생님 특징</h2>
+        <ul>
+          <li>설명을 자세하게 해주심</li>
+          <li>질문을 잘 받아주심</li>
+          <li>학생들과 소통을 중요하게 생각함</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>수업 스타일</h2>
+        <ul>
+          <li>개념 설명 후 문제 풀이</li>
+          <li>실습 중심 수업 진행</li>
+        </ul>
+      </div>
+
+      <div class="warning-card">
+        <h2>중요 주의사항</h2>
+        <ul>
+          <li>과제 제출 기한 엄수</li>
+          <li>수업 시간 지각 금지</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>최근 후기</h2>
+        <div id="recentReviews">
+          <p>설명이 자세해서 이해하기 쉬웠어요.</p>
+        </div>
+
+        <button onclick="goReviewWrite()">
+          <i data-lucide="pen-line"></i> 후기 작성하기
+        </button>
+        <button onclick="reportTeacher()">
+          <i data-lucide="flag"></i> 신고하기
+        </button>
+      </div>
+    </section>
+
+    <section id="reviews" class="page">
+      <div class="page-title">
+        <p class="eyebrow">Reviews</p>
+        <h1>후기 페이지</h1>
+      </div>
+
+      <div class="review-form">
+        <textarea id="reviewInput" placeholder="후기를 작성하세요."></textarea>
+        <button onclick="addReview()">
+          <i data-lucide="send"></i> 후기 작성
+        </button>
+        <p id="reviewGuide">로그인한 사용자만 후기를 작성할 수 있습니다.</p>
+      </div>
+
+      <div class="review-sort">
+        <button onclick="sortReviews('latest')">
+          <i data-lucide="clock"></i> 최신순
+        </button>
+        <button onclick="sortReviews('likes')">
+          <i data-lucide="thumbs-up"></i> 추천순
+        </button>
+      </div>
+
+      <div id="reviewList"></div>
+    </section>
+
+    <section id="settings" class="page">
+      <div class="page-title">
+        <p class="eyebrow">Settings</p>
+        <h1>설정</h1>
+      </div>
+
+      <div class="setting-card">
+        <h2>화면 모드</h2>
+        <button onclick="toggleTheme()">
+          <i data-lucide="moon-star"></i> 다크모드 / 라이트모드
+        </button>
+      </div>
+
+      <div class="setting-card">
+        <h2>계정 정보</h2>
+        <p id="accountInfo">로그인하지 않음</p>
+      </div>
+
+      <div class="setting-card">
+        <button onclick="logout()">
+          <i data-lucide="log-out"></i> 로그아웃
+        </button>
+      </div>
+    </section>
+
     <footer>
       <p>대덕소프트웨어마이스터고등학교</p>
 
