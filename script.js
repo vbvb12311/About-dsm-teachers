@@ -346,7 +346,7 @@ function sortReviews(type) {
 /**
  * [후기 추천 누적 증감 카운터 함수] 일치하는 ID 개체의 데이터 스택 카운트 단조 증가 처리
  */
-function likeReview(reviewId) {
+function likeReviews(reviewId) {
   reviews = reviews.map((review) =>
     review.id === reviewId ? { ...review, likes: review.likes + 1 } : review,
   );
@@ -431,4 +431,5 @@ window.onload = function () {
   renderRecentReviews();
   refreshIcons();
 };
-/**비상 주석추가 보충 */
+/**비상 주석추가 보충  */
+//코드수정
