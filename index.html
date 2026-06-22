@@ -1,64 +1,112 @@
 <!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>대마고 선생님백과</title>
+<!-- HTML5 문서 형식 선언 -->
 
+<html lang="ko">
+  <!-- 문서의 기본 언어를 한국어로 설정 -->
+
+  <head>
+    <!-- 웹페이지의 설정 정보를 담는 영역 -->
+
+    <meta charset="UTF-8" />
+    <!-- 한글 및 특수문자가 깨지지 않도록 UTF-8 문자 인코딩 사용 -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 모바일 기기에서도 화면 크기에 맞게 표시되도록 설정 -->
+
+    <title>대마고 선생님백과</title>
+    <!-- 브라우저 탭에 표시되는 웹사이트 제목 -->
+
+    <!-- SUIT 폰트 라이브러리 연결 -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css"
     />
+
+    <!-- 외부 CSS 파일 연결 -->
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
+    <!-- ========================= -->
+    <!-- 상단 헤더(Header) 영역 -->
+    <!-- ========================= -->
+
     <header>
+      <!-- 사이트 로고 및 제목 -->
       <div class="logo">
+        <!-- DSM 로고 표시 -->
         <span class="logo-mark">DSM</span>
+
+        <!-- 사이트 이름 -->
         <span>대마고 선생님백과</span>
       </div>
 
+      <!-- 메뉴 이동 영역 -->
       <nav>
+        <!-- 홈 페이지 이동 버튼 -->
         <button onclick="showPage('home')">
           <i data-lucide="home"></i>
           홈
         </button>
+
+        <!-- 선생님 목록 페이지 이동 버튼 -->
         <button onclick="showPage('teachers')">
           <i data-lucide="users"></i>
           선생님 목록
         </button>
+
+        <!-- 후기 페이지 이동 버튼 -->
         <button onclick="showPage('reviews')">
           <i data-lucide="message-square-text"></i>
           후기
         </button>
+
+        <!-- 설정 페이지 이동 버튼 -->
         <button onclick="showPage('settings')">
           <i data-lucide="settings"></i>
           설정
         </button>
       </nav>
 
+      <!-- 로그인 페이지 이동 버튼 -->
       <button class="login-btn" id="loginStatus" onclick="showPage('login')">
         <i data-lucide="log-in"></i>
         로그인
       </button>
     </header>
 
+    <!-- ========================= -->
+    <!-- 메인 홈 화면(Home) -->
+    <!-- ========================= -->
+
     <section id="home" class="page active">
+      <!-- 기본으로 보여지는 첫 화면 -->
+
       <div class="hero">
+        <!-- 메인 소개 문구 영역 -->
         <div class="hero-content">
+          <!-- 영문 부제목 -->
           <p class="eyebrow">DSM Teacher Guide</p>
+
+          <!-- 메인 제목 -->
           <h1>선생님 정보를 한눈에 확인해보세요</h1>
+
+          <!-- 사이트 설명 -->
           <p>
             수업 스타일, 과목, 주의사항, 후기를 모아 더 편하게 학교생활을 준비할
             수 있어요.
           </p>
 
+          <!-- 검색 기능 영역 -->
           <div class="search-wrap">
+            <!-- 선생님 이름 또는 과목 입력 -->
             <input
               type="text"
               id="homeSearch"
               placeholder="선생님 이름 또는 과목 검색"
             />
+
+            <!-- 검색 버튼 클릭 시 homeSearch 함수 실행 -->
             <button onclick="homeSearch()">
               <i data-lucide="search"></i>
               검색
@@ -66,15 +114,21 @@
           </div>
         </div>
 
+        <!-- 사이트 통계 정보 표시 -->
         <div class="hero-panel">
+          <!-- 등록된 선생님 수 -->
           <div>
             <strong>12</strong>
             <span>등록 선생님</span>
           </div>
+
+          <!-- 과목 종류 수 -->
           <div>
             <strong>6</strong>
             <span>과목 카테고리</span>
           </div>
+
+          <!-- 후기 개수 -->
           <div>
             <strong>24</strong>
             <span>학생 후기</span>
@@ -82,36 +136,59 @@
         </div>
       </div>
 
+      <!-- ========================= -->
+      <!-- 인기 선생님 영역 -->
+      <!-- ========================= -->
+
       <div class="section-heading">
         <div>
           <p class="eyebrow">Popular</p>
           <h2>인기 선생님</h2>
         </div>
+
+        <!-- 선생님 전체 목록 페이지로 이동 -->
         <button onclick="showPage('teachers')">
           <i data-lucide="arrow-right"></i>
           전체 보기
         </button>
       </div>
 
+      <!-- 선생님 카드들을 배치하는 영역 -->
       <div class="teacher-grid">
+        <!-- 김선생 카드 -->
         <div class="teacher-card" onclick="openTeacher('김선생', '수학')">
+          <!-- 과목 표시 -->
           <span class="subject-badge math">수학</span>
+
+          <!-- 선생님 이름 -->
           <h3>김선생</h3>
+
+          <!-- 선생님 설명 -->
           <p>개념 설명이 자세하고 질문을 잘 받아주는 선생님</p>
         </div>
 
+        <!-- 박선생 카드 -->
         <div class="teacher-card" onclick="openTeacher('박선생', '전공')">
           <span class="subject-badge major">전공</span>
+
           <h3>박선생</h3>
+
           <p>프로젝트와 실습 중심으로 수업을 진행하는 선생님</p>
         </div>
 
+        <!-- 이선생 카드 -->
         <div class="teacher-card" onclick="openTeacher('이선생', '영어')">
           <span class="subject-badge english">영어</span>
+
           <h3>이선생</h3>
+
           <p>발표와 활동을 통해 영어를 익히게 해주는 선생님</p>
         </div>
       </div>
+
+      <!-- ========================= -->
+      <!-- 추천 선생님 영역 -->
+      <!-- ========================= -->
 
       <div class="section-heading">
         <div>
@@ -121,57 +198,86 @@
       </div>
 
       <div class="teacher-grid">
+        <!-- 최선생 카드 -->
         <div class="teacher-card" onclick="openTeacher('최선생', '국어')">
           <span class="subject-badge korean">국어</span>
+
           <h3>최선생</h3>
+
           <p>글쓰기와 독해를 차근차근 잡아주는 선생님</p>
         </div>
 
+        <!-- 정선생 카드 -->
         <div class="teacher-card" onclick="openTeacher('정선생', '사회')">
           <span class="subject-badge social">사회</span>
+
           <h3>정선생</h3>
+
           <p>사례 중심 설명으로 내용을 쉽게 연결해주는 선생님</p>
         </div>
       </div>
 
+      <!-- 공지사항 영역 -->
       <div class="notice-box">
         <p class="eyebrow">Notice</p>
+
         <h2>공지사항</h2>
+
         <p>선생님에 대한 후기는 사실에 근거하여 작성해주세요.</p>
       </div>
     </section>
 
+    <!-- ========================= -->
+    <!-- 로그인 페이지 -->
+    <!-- ========================= -->
+
     <section id="login" class="page">
       <div class="page-title">
         <p class="eyebrow">Login</p>
+
         <h1>로그인</h1>
       </div>
 
       <div class="login-card">
+        <!-- 아이디 입력 -->
         <label for="loginId">아이디</label>
+
         <input type="text" id="loginId" placeholder="아이디를 입력하세요" />
 
+        <!-- 비밀번호 입력 -->
         <label for="loginPassword">비밀번호</label>
+
         <input
           type="password"
           id="loginPassword"
           placeholder="비밀번호를 입력하세요"
         />
 
+        <!-- 로그인 버튼 -->
         <button onclick="login()">
           <i data-lucide="log-in"></i>
           로그인하기
         </button>
+
+        <!-- 로그인 안내 문구 -->
         <p id="loginMessage">로그인하면 후기를 작성할 수 있습니다.</p>
       </div>
     </section>
 
+    <!-- ========================= -->
+    <!-- 선생님 목록 페이지 -->
+    <!-- ========================= -->
+
     <section id="teachers" class="page">
       <div class="page-title">
         <p class="eyebrow">Teachers</p>
+
         <h1>선생님 목록</h1>
       </div>
 
+      ```html
+      <!-- 선생님 검색 입력창 -->
+      <!-- 사용자가 이름을 입력하면 searchTeacher() 함수가 실행되어 검색 -->
       <input
         type="text"
         id="teacherSearch"
@@ -179,15 +285,29 @@
         onkeyup="searchTeacher()"
       />
 
+      <!-- 과목별 필터 버튼 영역 -->
+      <!-- 버튼 클릭 시 해당 과목의 선생님만 표시 -->
       <div class="filter-buttons">
+        <!-- 모든 선생님 표시 -->
         <button onclick="filterTeacher('전체')">전체</button>
+
+        <!-- 국어 선생님만 표시 -->
         <button onclick="filterTeacher('국어')">국어</button>
+
+        <!-- 영어 선생님만 표시 -->
         <button onclick="filterTeacher('영어')">영어</button>
+
+        <!-- 수학 선생님만 표시 -->
         <button onclick="filterTeacher('수학')">수학</button>
+
+        <!-- 사회 선생님만 표시 -->
         <button onclick="filterTeacher('사회')">사회</button>
+
+        <!-- 전공 선생님만 표시 -->
         <button onclick="filterTeacher('전공')">전공</button>
       </div>
 
+      <!-- 목록 제목 영역 -->
       <div class="section-heading">
         <div>
           <p class="eyebrow">Popular & List</p>
@@ -195,47 +315,72 @@
         </div>
       </div>
 
+      <!-- 선생님 카드 목록 -->
       <div class="teacher-grid">
+        <!-- 김선생 정보 카드 -->
         <div class="teacher-card teacher-item" data-subject="수학">
+          <!-- 과목 표시 -->
           <span class="subject-badge math">수학</span>
+
+          <!-- 선생님 이름 -->
           <h3>김선생</h3>
+
+          <!-- 담당 과목 -->
           <p>수학 담당</p>
+
+          <!-- 상세 정보 페이지 이동 -->
           <button onclick="openTeacher('김선생', '수학')">
             <i data-lucide="file-search"></i> 상세보기
           </button>
         </div>
 
+        <!-- 박선생 정보 카드 -->
         <div class="teacher-card teacher-item" data-subject="국어">
           <span class="subject-badge korean">국어</span>
+
           <h3>박선생</h3>
+
           <p>국어 담당</p>
+
           <button onclick="openTeacher('박선생', '국어')">
             <i data-lucide="file-search"></i> 상세보기
           </button>
         </div>
 
+        <!-- 이선생 정보 카드 -->
         <div class="teacher-card teacher-item" data-subject="전공">
           <span class="subject-badge major">전공</span>
+
           <h3>이선생</h3>
+
           <p>전공 담당</p>
+
           <button onclick="openTeacher('이선생', '전공')">
             <i data-lucide="file-search"></i> 상세보기
           </button>
         </div>
 
+        <!-- 한선생 정보 카드 -->
         <div class="teacher-card teacher-item" data-subject="영어">
           <span class="subject-badge english">영어</span>
+
           <h3>한선생</h3>
+
           <p>영어 담당</p>
+
           <button onclick="openTeacher('한선생', '영어')">
             <i data-lucide="file-search"></i> 상세보기
           </button>
         </div>
 
+        <!-- 정선생 정보 카드 -->
         <div class="teacher-card teacher-item" data-subject="사회">
           <span class="subject-badge social">사회</span>
+
           <h3>정선생</h3>
+
           <p>사회 담당</p>
+
           <button onclick="openTeacher('정선생', '사회')">
             <i data-lucide="file-search"></i> 상세보기
           </button>
@@ -243,15 +388,27 @@
       </div>
     </section>
 
+    <!-- ========================= -->
+    <!-- 선생님 상세 정보 페이지 -->
+    <!-- ========================= -->
+
     <section id="detail" class="page">
+      <!-- 선생님 프로필 영역 -->
       <div class="profile-card">
+        <!-- 프로필 이미지 자리 -->
         <div class="profile-image">T</div>
+
+        <!-- 선생님 이름 -->
         <h1 id="teacherName">김선생</h1>
+
+        <!-- 담당 과목 -->
         <p id="teacherSubject">수학 담당</p>
       </div>
 
+      <!-- 선생님 특징 -->
       <div class="info-card">
         <h2>선생님 특징</h2>
+
         <ul>
           <li>설명을 자세하게 해주심</li>
           <li>질문을 잘 받아주심</li>
@@ -259,95 +416,145 @@
         </ul>
       </div>
 
+      <!-- 수업 스타일 -->
       <div class="info-card">
         <h2>수업 스타일</h2>
+
         <ul>
           <li>개념 설명 후 문제 풀이</li>
           <li>실습 중심 수업 진행</li>
         </ul>
       </div>
 
+      <!-- 주의사항 -->
       <div class="warning-card">
         <h2>중요 주의사항</h2>
+
         <ul>
           <li>과제 제출 기한 엄수</li>
           <li>수업 시간 지각 금지</li>
         </ul>
       </div>
 
+      <!-- 최근 후기 영역 -->
       <div class="info-card">
         <h2>최근 후기</h2>
+
+        <!-- 최근 후기 표시 영역 -->
         <div id="recentReviews">
           <p>설명이 자세해서 이해하기 쉬웠어요.</p>
         </div>
 
+        <!-- 후기 작성 페이지 이동 -->
         <button onclick="goReviewWrite()">
           <i data-lucide="pen-line"></i> 후기 작성하기
         </button>
+
+        <!-- 신고 기능 -->
         <button onclick="reportTeacher()">
           <i data-lucide="flag"></i> 신고하기
         </button>
       </div>
     </section>
 
+    <!-- ========================= -->
+    <!-- 후기 페이지 -->
+    <!-- ========================= -->
+
     <section id="reviews" class="page">
       <div class="page-title">
         <p class="eyebrow">Reviews</p>
+
         <h1>후기 페이지</h1>
       </div>
 
+      <!-- 후기 작성 영역 -->
       <div class="review-form">
+        <!-- 후기 입력창 -->
         <textarea id="reviewInput" placeholder="후기를 작성하세요."></textarea>
+
+        <!-- 후기 등록 버튼 -->
         <button onclick="addReview()">
           <i data-lucide="send"></i> 후기 작성
         </button>
+
+        <!-- 로그인 안내 -->
         <p id="reviewGuide">로그인한 사용자만 후기를 작성할 수 있습니다.</p>
       </div>
 
+      <!-- 후기 정렬 기능 -->
       <div class="review-sort">
+        <!-- 최신순 정렬 -->
         <button onclick="sortReviews('latest')">
           <i data-lucide="clock"></i> 최신순
         </button>
+
+        <!-- 추천순 정렬 -->
         <button onclick="sortReviews('likes')">
           <i data-lucide="thumbs-up"></i> 추천순
         </button>
       </div>
 
+      <!-- 작성된 후기 목록 출력 영역 -->
       <div id="reviewList"></div>
     </section>
+
+    <!-- ========================= -->
+    <!-- 설정 페이지 -->
+    <!-- ========================= -->
 
     <section id="settings" class="page">
       <div class="page-title">
         <p class="eyebrow">Settings</p>
+
         <h1>설정</h1>
       </div>
 
+      <!-- 화면 모드 설정 -->
       <div class="setting-card">
         <h2>화면 모드</h2>
+
         <button onclick="toggleTheme()">
-          <i data-lucide="moon-star"></i> 다크모드 / 라이트모드
+          <i data-lucide="moon-star"></i>
+          다크모드 / 라이트모드
         </button>
       </div>
 
+      <!-- 계정 정보 표시 -->
       <div class="setting-card">
         <h2>계정 정보</h2>
+
         <p id="accountInfo">로그인하지 않음</p>
       </div>
 
+      <!-- 로그아웃 기능 -->
       <div class="setting-card">
         <button onclick="logout()">
-          <i data-lucide="log-out"></i> 로그아웃
+          <i data-lucide="log-out"></i>
+          로그아웃
         </button>
       </div>
     </section>
 
+    <!-- ========================= -->
+    <!-- 푸터(Footer) 영역 -->
+    <!-- ========================= -->
+
     <footer>
+      <!-- 학교명 -->
       <p>대덕소프트웨어마이스터고등학교</p>
+
+      <!-- 제작자 -->
       <p>제작자 : 김승수</p>
+
+      <!-- 제출일 -->
       <p>제출일 : 2026.06.07</p>
     </footer>
 
+    <!-- Lucide 아이콘 라이브러리 -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JavaScript 기능 파일 연결 -->
     <script src="script.js"></script>
   </body>
 </html>

@@ -431,4 +431,4 @@ window.onload = function () {
   renderRecentReviews();
   refreshIcons();
 };
-/**비상 */
+/**비상 주석추가 보충 */
