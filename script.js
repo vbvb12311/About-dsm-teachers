@@ -431,3 +431,4 @@ window.onload = function () {
   renderRecentReviews();
   refreshIcons();
 };
+/**비상 */
